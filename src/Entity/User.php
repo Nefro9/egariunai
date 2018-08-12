@@ -9,8 +9,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
+ * @UniqueEntity(fields="email", message="Toks el.paštas jau užregistruotas")
+ * @UniqueEntity(fields="username", message="Toks slapyvardis jau užregistruotas")
  */
 class User implements UserInterface
 {

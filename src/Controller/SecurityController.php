@@ -68,7 +68,6 @@ class SecurityController extends Controller
             // TODO: move to event
             $this->addFlash('success', 'Sveikiname, jus sekmingai užsiregistravote');
 
-
             return $this->redirectToRoute('register_form');
         }
 
