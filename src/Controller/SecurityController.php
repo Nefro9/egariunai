@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Event\UserRegistrationEvent;
 use App\Form\LoginForm;
 use App\Form\RegistrationForm;
-use App\Form\UserType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +24,10 @@ class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="login_form")
+     * @param Request $request
+     * @param AuthenticationUtils $authenticationUtils
+     *
+     * @return Response
      */
     public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
     {
@@ -43,11 +47,20 @@ class SecurityController extends Controller
 
     /**
      * @Route("/register",  name="register_form")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param EventDispatcherInterface $dispatcher
+     * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EventDispatcherInterface $dispatcher): Response
     {
         $user = new User;
         $form = $this->createForm(RegistrationForm::class, $user);
+
+        $userEvent = new UserRegistrationEvent($user);
+
+        $dispatcher->dispatch(UserRegistrationEvent::NAME, $userEvent);
+
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
