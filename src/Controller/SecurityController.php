@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -24,7 +25,7 @@ class SecurityController extends Controller
     /**
      * @Route("/login", name="login_form")
      */
-    public function login(Request $request, AuthenticationUtils  $authenticationUtils): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
     {
         $form = $this->createForm(LoginForm::class);
 
@@ -33,22 +34,10 @@ class SecurityController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $error = $authenticationUtils->getLastAuthenticationError();
-                dump($error);
-
-//            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-//            $user->setPassword($password);
-//
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($user);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('login_form');
         }
 
         return $this->render(
-            'security/login.html.twig',
-            array('form' => $form->createView())
+            'security/login.html.twig', ['form' => $form->createView()]
         );
     }
 
@@ -57,7 +46,7 @@ class SecurityController extends Controller
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $user = new User();
+        $user = new User;
         $form = $this->createForm(RegistrationForm::class, $user);
 
         $form->handleRequest($request);
@@ -70,12 +59,21 @@ class SecurityController extends Controller
             $em->persist($user);
             $em->flush();
 
+
+            // TODO: move to event
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->container->get('security.token_storage')->setToken($token);
+            $this->container->get('session')->set('_security_main', serialize($token));
+
+            // TODO: move to event
+            $this->addFlash('success', 'Sveikiname, jus sekmingai užsiregistravote');
+
+
             return $this->redirectToRoute('register_form');
         }
 
         return $this->render(
-            'security/register.html.twig',
-            array('form' => $form->createView())
+            'security/register.html.twig', ['form' => $form->createView()]
         );
     }
 
