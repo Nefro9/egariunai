@@ -11,7 +11,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -57,11 +56,6 @@ class SecurityController extends Controller
         $user = new User;
         $form = $this->createForm(RegistrationForm::class, $user);
 
-        $userEvent = new UserRegistrationEvent($user);
-
-        $dispatcher->dispatch(UserRegistrationEvent::NAME, $userEvent);
-
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -72,14 +66,10 @@ class SecurityController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $userEvent = new UserRegistrationEvent($user);
 
-            // TODO: move to event
-            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
-            $this->container->get('security.token_storage')->setToken($token);
-            $this->container->get('session')->set('_security_main', serialize($token));
-
-            // TODO: move to event
-            $this->addFlash('success', 'Sveikiname, jus sekmingai užsiregistravote');
+            $dispatcher->dispatch(UserRegistrationEvent::AUTO_LOGGIN, $userEvent);
+            $dispatcher->dispatch(UserRegistrationEvent::ON_COMPLETE, $userEvent);
 
             return $this->redirectToRoute('register_form');
         }

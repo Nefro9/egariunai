@@ -7,7 +7,8 @@ use Symfony\Component\EventDispatcher\Event;
 
 class UserRegistrationEvent extends Event
 {
-    const NAME = 'user.registerComplete';
+    const ON_COMPLETE = 'registration.on_complete';
+    const AUTO_LOGGIN = 'registration.auto_loggin';
 
     /**
      * @var User $user
@@ -17,5 +18,10 @@ class UserRegistrationEvent extends Event
     public function __construct(User $user)
     {
         $this->user = $user;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
     }
 }
