@@ -1,0 +1,20 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+
+        <div class="alert alert-{{ label }} alert-dismissible mt-2">
+            {{ message|trans|raw  }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% if form is defined and not form.vars.valid %}
+    <div class="alert alert-danger alert-dismissible mt-2">
+        {{ 'form.error.exist'|trans|raw }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+{% endif %}
