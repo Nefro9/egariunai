@@ -1,0 +1,4 @@
+services:
+#    regi_admin.example:
+#        class: Regi\AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

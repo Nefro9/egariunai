@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.getLocale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono%7CArvo:400%7CRoboto:300,400,500,700%7CCookie" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../vendor/perfect-scrollbar.css">
+
+    <link rel="stylesheet" href="../css/simplify.min.css">
+    <title>EGariunai.lt</title>
+</head>
+<body>
+
+<div class="website" id="fullpage">
+    <div class="bg-gradient">
+        <div class="topbar-container">
+            <nav class="navbar navbar-expand-lg border-bottom-0 navbar-dark py-1">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ path('homepage') }}" style="font-size: 1.5rem;">eGariunai.lt</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    {#<div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                            {{ include('logged_header_menu.html.twig') }}
+                        {% else %}
+                            <ul class="navbar-nav ml-auto py-3">
+                                <li class="nav-item mr-4">
+                                    <a class="btn btn-sm btn-success" href="{{ path('login_form') }}">Prisijungti</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-sm btn-primary" href="{{ path('register_form') }}">Registracija</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    {#</div>#}
+                </div>
+
+            </nav>
+
+        </div>
+    </div>
+
+    {{ block('body') }}
+
+    <div class="py-6 bg-white border-top">
+        <div class="text-center">
+            <h5 class="mb-0 text-secondary">Copyright egariunai.lt</h5>
+        </div>
+    </div>
+</div>
+
+<script src="../vendor/jquery.min.js"></script>
+<script src="../vendor/popper.min.js"></script>
+<script src="../vendor/bootstrap.min.js"></script>
+<script src="../vendor/perfect-scrollbar.min.js"></script>
+
+</body>
+</html>

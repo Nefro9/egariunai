@@ -1,0 +1,9 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+#website_main:
+#  path:     /
+#  controller: WebsiteBundle:Default:index
+
+logout:
+  path: /logout

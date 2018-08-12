@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="pt-14 pb-14 page-content">
+        <div class="container ">
+            <div class="card d-block mx-auto" style="width:28rem;">
+                <div class="card-header py-3  d-flex justify-content-between align-items-center"
+                     style="border-bottom: 1px solid #eee;">
+                    <h5>Prisijungimas</h5>
+                    <div class="media-box media-box-sm bg-primary text-white" style="">
+                        <i class="material-icons">all_inclusive</i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    <div class="form-group mb-4 mt-2">
+                        {{ form_label(form._username) }}
+                        {{ form_widget(form._username) }}
+                    </div>
+                    <div class="form-group mb-4">
+                        {{ form_label(form._password) }}
+                        {{ form_widget(form._password) }}
+                    </div>
+                    <div class="py-1">
+                        <button type="submit" class="btn btn-primary btn-block ">Prisijungti</button>
+                    </div>
+                    <div class="py-2 px-0">
+                        <p class="mb-0">
+                            <button class=" btn btn-link pl-1">Pamiršote slaptažodį?</button>
+                        </p>
+                    </div>
+                    <div class="py-0 mt-2 d-flex justify-content-around">
+                        <button class="btn btn-flat-info"><i class="fa fa-twitter"></i></button>
+                        <button class="btn btn-flat-danger"><i class="fa fa-google"></i></button>
+                        <button class="btn btn-flat-primary"><i class="fa fa-facebook"></i></button>
+                        <button class="btn btn-flat-warning"><i class="fa fa-stack-overflow"></i></button>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('register_form') }}" class=" btn btn-link pl-1">Neturite dar paskyros?
+                        Registruokites!</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
