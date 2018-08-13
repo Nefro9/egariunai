@@ -13,71 +13,67 @@ class Builder implements ContainerAwareInterface
     public function mainMenu(FactoryInterface $factory, array $options)
     {
 
-        $menu = $factory->createItem('root', array(
-            'childrenAttributes'    => array(
-                'class'             => 'nav nav-pills flex-column',
-            ),
-        ));
+        $menu = $factory->createItem('root', [
+            'childrenAttributes' => [
+                'class' => 'nav nav-pills flex-column',
+            ],
+        ]);
 
-        $menu->addChild('Pagrindinis', array(
-            'route' => 'admin',
-            'attributes'    => array(
+        $menu->addChild('Pagrindinis', [
+            'route'      => 'admin',
+            'attributes' => [
                 'icon' => 'fa fa-home'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('Prekės', array(
-            'route' => 'products',
-            'attributes'    => array(
+        $menu->addChild('Prekės', [
+            'route'      => 'products',
+            'attributes' => [
                 'icon' => 'fa fa-list'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('Užsakymai', array(
-            'route' => 'orders',
-            'attributes'    => array(
+        $menu->addChild('Užsakymai', [
+            'route'      => 'orders',
+            'attributes' => [
                 'icon' => 'fa fa-cart-plus'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('Kategorijos', array(
-            'route' => 'categories',
-            'attributes'    => array(
+        $menu->addChild('Kategorijos', [
+            'route'      => 'categories',
+            'attributes' => [
                 'icon' => 'fa fa-tags'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('Vartotojai', array(
-            'route' => 'users',
-            'attributes'    => array(
+        $menu->addChild('Vartotojai', [
+            'route'      => 'users',
+            'attributes' => [
                 'icon' => 'fa fa-users'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('Žinutės', array(
-            'route' => 'messages',
-            'attributes'    => array(
+        $menu->addChild('Žinutės', [
+            'route'      => 'messages',
+            'attributes' => [
                 'icon' => 'fa fa-envelope'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('menu-space', array(
-            'label' => '',
-            'attributes'    => array(
+        $menu->addChild('menu-space', [
+            'label'      => '',
+            'attributes' => [
                 'class' => 'mt-3'
-            )
-        ));
+            ]
+        ]);
 
-        $menu->addChild('Logout', array(
-            'route' => 'fos_user_security_logout',
-            'attributes'    => array(
+        $menu->addChild('Logout', [
+            'route'      => 'fos_user_security_logout',
+            'attributes' => [
                 'icon' => 'fa fa-sign-out'
-            )
-        ));
-
-
-
-
+            ]
+        ]);
 
 
         return $menu;

@@ -70,9 +70,10 @@ class ProductCategory
 
     /**
      * @param ProductCategory $children
+     *
      * @return $this
      */
-    public function addChildren (ProductCategory $children)
+    public function addChildren(ProductCategory $children)
     {
         $this->children[] = $children;
 
@@ -82,16 +83,17 @@ class ProductCategory
     /**
      * @return arrayCollection
      */
-    public function getChildren ()
+    public function getChildren()
     {
         return $this->children;
     }
 
     /**
      * @param ProductCategory $parent
+     *
      * @return $this
      */
-    public function addParent (ProductCategory $parent)
+    public function addParent(ProductCategory $parent)
     {
         $this->parent = $parent;
         return $this;
@@ -100,7 +102,7 @@ class ProductCategory
     /**
      * @return ProductCategory
      */
-    public function getParent ()
+    public function getParent()
     {
         return $this->parent;
     }
@@ -194,7 +196,7 @@ class ProductCategory
     public function onUpdate()
     {
         $slugify    = new Slugify();
-        $this->slug = $slugify->slugify( $this->title );
+        $this->slug = $slugify->slugify($this->title);
 
     }
 }

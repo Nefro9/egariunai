@@ -17,13 +17,12 @@ class NewCategory extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('parent', EntityType::class, array(
-                'placeholder' => 'Select parent',
-                'required' => false,
-                'class' => ProductCategory::class,
+            ->add('parent', EntityType::class, [
+                'placeholder'  => 'Select parent',
+                'required'     => FALSE,
+                'class'        => ProductCategory::class,
                 'choice_label' => 'title',
-            ));
-        ;
+            ]);;
 
 
     }

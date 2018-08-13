@@ -14,12 +14,12 @@ categories-edit:
     path:     /categories/remove/{id}
     defaults: { _controller: AdminBundle:Default:removeCategory }
     requirements:
-            id: '\d+'
+        id: '\d+'
 categories-remove:
     path:     /categories/remove/{id}
     defaults: { _controller: AdminBundle:Default:removeCategory }
     requirements:
-            id: '\d+'
+        id: '\d+'
 
 users:
     path:     /users

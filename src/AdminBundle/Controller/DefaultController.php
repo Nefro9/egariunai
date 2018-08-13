@@ -9,53 +9,56 @@ use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller {
-    public function indexAction() {
-        return $this->render( 'admin/index.html.twig' );
+class DefaultController extends Controller
+{
+    public function indexAction()
+    {
+        return $this->render('admin/index.html.twig');
     }
 
-    public function listCategoriesAction( Request $request ) {
+    public function listCategoriesAction(Request $request)
+    {
 
         $newCategory = new ProductCategory();
 
-        $form        = $this->createForm( NewCategory::class, $newCategory);
+        $form = $this->createForm(NewCategory::class, $newCategory);
 
 //        $form        = $this->createForm( NewCategory::class, $newCategory, array(
 //            'entity_manager' => $this->getDoctrine()->getManager(),
 //        ) );
 
-        $form->handleRequest( $request );
+        $form->handleRequest($request);
 
-        if ( $form->isSubmitted() && $form->isValid() ) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $category = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist( $category );
+            $em->persist($category);
             $em->flush();
 
             // Reset form after submit
             $newCategory = new ProductCategory();
-            $form        = $this->createForm( NewCategory::class, $newCategory );
+            $form        = $this->createForm(NewCategory::class, $newCategory);
         }
 
 
-        $categories = $this->getDoctrine()->getRepository( ProductCategory::class )->findBy( [ 'parent' => null ] );
+        $categories = $this->getDoctrine()->getRepository(ProductCategory::class)->findBy(['parent' => NULL]);
 
-        return $this->render( 'admin/categories/categories-list.html.twig', array(
+        return $this->render('admin/categories/categories-list.html.twig', [
             'categories' => $categories,
             'form'       => $form->createView()
-        ) );
+        ]);
     }
 
     function removeCategoryAction(Request $request, $id)
     {
         $category = $this->getDoctrine()->getRepository(ProductCategory::class)->findOneBy(['id' => $id]);
-        $backUrl = $request->headers->get('referer');
+        $backUrl  = $request->headers->get('referer');
 
-        if($category) {
+        if ($category) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove( $category );
+            $em->remove($category);
             $em->flush();
         }
 
