@@ -16,20 +16,20 @@ class RegistrationForm extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label'       => 'El. paštas',
-                'attr' => [
+                'label' => 'El. paštas',
+                'attr'  => [
                     'placeholder' => 'abc@gmail.com',
                 ]
             ])
             ->add('username', TextType::class, [
-                'label'       => 'Slapyvardis',
-                'attr' => [
+                'label' => 'Slapyvardis',
+                'attr'  => [
                     'placeholder' => 'tomas_k',
                 ]
             ])
             ->add('plainPassword', PasswordType::class, [
-                'label'       => 'Slaptažodis',
-                'attr' => [
+                'label' => 'Slaptažodis',
+                'attr'  => [
                     'placeholder' => 'A-z, 0-9',
                 ]
             ]);

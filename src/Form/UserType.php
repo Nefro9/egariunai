@@ -21,14 +21,13 @@ class UserType extends AbstractType
             ->add('username', TextType::class)
             ->add('plainPassword', PasswordType::class,
                 ['label' => 'New Password']
-            )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => User::class,
-        ));
+        ]);
     }
 }

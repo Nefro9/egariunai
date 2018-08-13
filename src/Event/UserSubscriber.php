@@ -31,14 +31,14 @@ class UserSubscriber implements EventSubscriberInterface
         //TODO: send email
         $user = $event->getUser();
 
-        $this->session->getFlashBag()->add('success', 'Sveikiname '.$user->getUsername().', jus sekmingai užsiregistravote');
+        $this->session->getFlashBag()->add('success', 'Sveikiname ' . $user->getUsername() . ', jus sekmingai užsiregistravote');
     }
 
     public function autoLogginUser(UserRegistrationEvent $event)
     {
         $user = $event->getUser();
 
-        $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+        $token = new UsernamePasswordToken($user, NULL, 'main', $user->getRoles());
         $this->tokenStorage->setToken($token);
         $this->session->set('_security_main', serialize($token));
     }

@@ -17,17 +17,16 @@ class LoginForm extends AbstractType
         $builder
             ->add('_username', TextType::class, [
                 'label' => 'El. paštas',
-                'attr' => ['placeholder' => 'abc@gmail.com']
+                'attr'  => ['placeholder' => 'abc@gmail.com']
             ])
-            ->add('_password', PasswordType::class)
-        ;
+            ->add('_password', PasswordType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'csrf_token_id' => 'authenticate',
-        ));
+        ]);
     }
 
     public function getBlockPrefix()
