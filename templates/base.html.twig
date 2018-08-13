@@ -17,9 +17,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123890757-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
+
         gtag('js', new Date());
         gtag('config', 'UA-123890757-1');
     </script>
@@ -53,6 +55,39 @@
             </nav>
 
         </div>
+        {% if app.request.get('_route') == 'homepage' %}
+            <div class="pt-10 border-bottom">
+                <div class="text-center mt-8 mb-10">
+                    <h2 class="mb-4">
+                        <span class="d-none d-md-inline">Neeužilgo geriūnų prekyba internetu</span>
+                    </h2>
+                    <h4 class="text-secondary font-weight-light mb-6">
+                        Nepraleiskite artimiausias naujienas!
+                    </h4>
+
+                    {% if not app.session.get('newssletter') %}
+                    {{ form_start(newsletter) }}
+                        <div class="py-2 text-center" style="max-width: 350px; margin: 30px auto 100px;">
+                            <div class="input-group mb-3">
+
+                                {{ form_widget(newsletter.email) }}
+                                <div class="input-group-append">
+                                    <button class="btn btn-warning" type="submit">Sutinku</button>
+                                </div>
+                            </div>
+
+                            {{ form_errors(newsletter.email) }}
+                        </div>
+                    {{ form_end(newsletter) }}
+                    {% else %}
+
+                        <h3 class="text-success" style="margin: 70px auto 100px;"">Neužilgo pranešime apie atidaryma</h3>
+
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
     </div>
 
 
