@@ -90,15 +90,9 @@
                             {{ form_errors(newsletter.email) }}
                         </div>
                         {{ form_end(newsletter) }}
-                    {% else %}
-
-                        <h3 class="text-success" style="margin-bottom: 50px;">Neužilgo pranešime apie atidaryma</h3>
 
                     {% endif %}
 
-                     <div style="margin: 0 auto 40px;">
-                         <div class="fb-page" data-href="https://www.facebook.com/egariunai.lt" data-height="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/egariunai.lt" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/egariunai.lt">Egariunai - Gariunu Elektronine Parduotuve</a></blockquote></div>
-                     </div>
                 </div>
             </div>
         {% endif %}
@@ -112,8 +106,13 @@
 
     {{ block('body') }}
 
-    <div class="py-6 bg-white border-top">
+    <div class="py-6 bg-gradient border-top">
+
         <div class="text-center">
+
+                     <div style="margin: 0 auto 40px;">
+                         <div class="fb-page" data-href="https://www.facebook.com/egariunai.lt" data-height="250" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/egariunai.lt" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/egariunai.lt">Egariunai - Gariunu Elektronine Parduotuve</a></blockquote></div>
+                     </div>
             <h5 class="mb-0 text-secondary">Copyright egariunai.lt</h5>
         </div>
     </div>
