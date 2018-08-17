@@ -1,0 +1,172 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% import "knp_menu.html.twig" as macros %}
+
+{% block root %}
+    {% set listAttributes = item.childrenAttributes %}
+
+    {% if listAttributes.class is defined %}
+        {% set listAttributes = {'class': listAttributes.class ~ ' list-nav sidebar-nav list-nav-dark list-nav-dark-info'} %}
+    {% else %}
+        {% set listAttributes = {'class': 'list-nav sidebar-nav list-nav-dark list-nav-dark-info'} %}
+    {% endif %}
+
+    {{ block('list') -}}
+{% endblock %}
+
+{% block item %}
+
+    {% if item.displayed %}
+        {# Fetch all attributes of the item. #}
+        {%- set attributes = item.attributes %}
+
+        {# Determine if item is a small, intermediate, heading to separate multiple menu sections. #}
+        {%- set is_heading = item.attribute('heading')|default(false) %}
+
+        {%- set is_title = item.getExtra('title')|default(false) %}
+
+        {# Unset the checkmarks we've used above. #}
+        {%- set attributes = attributes|merge({'dropdown': null, 'heading': null }) %}
+
+        {# Set custom classes and/or automatic ones from the bundle (like first and last) #}
+        {%- set classes = item.attribute('class') is not empty ? [item.attribute('class')] : [] %}
+
+        {%- if is_title %}
+            {%- set classes = classes|merge(['list-nav-group-title']) %}
+        {% else %}
+            {%- set classes = classes|merge(['list-nav-item']) %}
+        {%- endif %}
+
+
+        {%- if matcher.isCurrent(item) or matcher.isAncestor(item) %}
+            {%- set classes = classes|merge([options.currentClass]) %}
+
+        {%- elseif matcher.isAncestor(item, options.depth) %}
+            {%- set classes = classes|merge([options.ancestorClass]) %}
+        {%- endif %}
+        {%- if item.actsLikeFirst %}
+            {%- set classes = classes|merge([options.firstClass]) %}
+        {%- endif %}
+        {%- if item.actsLikeLast %}
+            {%- set classes = classes|merge([options.lastClass]) %}
+        {%- endif %}
+
+        {# Build classes of the child <ul></ul> element #}
+        {%- set childrenClasses = item.childrenAttribute('class') is not empty ? [item.childrenAttribute('class')] : [] %}
+
+        {# Add one (or more) specific class(es) for correctly rendering an intermediate menu heading. #}
+        {%- if is_heading %}
+            {%- set classes = classes|merge(['heading']) %}
+        {% endif %}
+        {%- if item.uri is not empty and (not item.current or options.currentAsLink) %}
+            {%- set classes = classes|merge(['heading']) %}
+        {% endif %}
+
+
+        {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
+        {# Melt all the classes together. #}
+        {%- if classes is not empty %}
+            {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
+        {%- endif %}
+        {%- set listAttributes = item.childrenAttributes|merge({'class': childrenClasses|join(' ') }) %}
+
+        {# Remove icon from list attribute #}
+        <li{{ macros.attributes(attributes) }}>
+
+            {%- if item.uri is not empty and (not item.current or options.currentAsLink) and not item.children %}
+                {# Render <a></a> link item. #}
+                {{ block('linkElement') }}
+            {%- elseif is_title %}
+                {# Render an intermediate heading for specifying sections. #}
+                {{ block('sectionTitle') }}
+            {%- elseif is_heading is not empty %}
+                {# Render an intermediate heading for specifying sections. #}
+                {{ block('smallHeading') }}
+            {%- elseif is_heading is not empty %}
+                {# Render an intermediate heading for specifying sections. #}
+                {{ block('smallHeading') }}
+            {%- else %}
+                {# Render a piece of text (no link). #}
+                {{ block('spanElement') }}
+            {%- endif %}
+
+            {# Render the list of children #}
+            {{ block('listCustom') }}
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block linkElement %}
+
+    {%- set classes = item.linkAttributes('class') is not empty ? [item.linkAttributes.class] : [] %}
+
+    {%- set classes = classes|merge(['list-nav-link']) %}
+    {%- set attributes = item.linkAttributes|merge({'class': classes|join(' ')}) %}
+
+
+    <a href="{{ item.uri }}"{{ macros.attributes(attributes) }}>
+        {{ block('extraIcon') }}
+
+        {% if item.parent.parent is not empty %}
+            <span class="list-nav-icon list-nav-icon-sm">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </span>
+        {% endif %}
+        <span class="list-nav-label">{{ block('label') }}</span>
+    </a>
+
+{% endblock %}
+
+{% block spanElement %}
+    {%- set classes = item.linkAttributes('class') is not empty ? [item.linkAttributes.class] : [] %}
+
+    {%- set classes = classes|merge(['list-nav-link']) %}
+    {%- set attributes = item.linkAttributes|merge({'class': classes|join(' ')}) %}
+
+
+    <a href="javascript:;"{{ macros.attributes(attributes) }}>
+        {{ block('extraIcon') }}
+        <span class="list-nav-label">{{ block('label') }}</span>
+
+        {% if item.children is not empty %}
+            <span class="list-nav-expand">
+                <i class="material-icons">add</i>
+            </span>
+        {% endif %}
+    </a>
+
+{% endblock %}
+
+{# Renders the contents of the small menu sub-heading. #}
+{% block smallHeading %}
+    <h3 class="uppercase">{{ block('label') }}</h3>
+{% endblock %}
+
+{% block sectionTitle %}
+    <span>{{ block('label') }}</span>
+{% endblock %}
+
+{% block label %}
+    {{ item.label }}
+{% endblock %}
+
+
+{% block listCustom %}
+    {% if item.children is not empty %}
+        <ul class="list-nav-child">
+            {{ block('children') }}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block extraIcon %}
+    {% if item.getExtra('icon') %}
+        <span class="list-nav-icon">
+                {% if item.getExtra('icon_type') and item.getExtra('icon_type') == 'material' %}
+                    <i class="material-icons">{{ item.getExtra('icon') }}</i>
+                {% else %}
+                    <i class="{{ item.getExtra('icon') }}"></i>
+                {% endif %}
+            </span>
+    {% endif %}
+{% endblock %}

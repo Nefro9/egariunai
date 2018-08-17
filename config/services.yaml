@@ -29,3 +29,20 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.menu_builder:
+        class: App\Menu\AdminMainMenu
+        arguments: ["@knp_menu.factory"]
+
+    admin.main_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", adminMenu]
+        tags:
+        - { name: knp_menu.menu, alias: admin.main } # The alias is what is used to retrieve the menu
+
+
+knp_menu:
+    twig:
+        template: admin/menu.html.twig
+    templating: false
+    default_renderer: twig
