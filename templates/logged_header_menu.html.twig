@@ -101,6 +101,9 @@
             <a href="{{ path('profile') }}" class="dropdown-item">Profilis</a>
             <a class="dropdown-item empty-link">Užsakymai</a>
             <a class="dropdown-item empty-link">Prekės</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('dashboard') }}" class="dropdown-item">Admin</a>
+            {% endif %}
             <a href="{{ path('logout') }}" class="dropdown-item ">Atsijungti</a>
         </div>
     </li>
