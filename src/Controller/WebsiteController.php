@@ -33,6 +33,8 @@ class WebsiteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $newsletter->setIpAddress($request->getClientIp());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($newsletter);
             $em->flush();

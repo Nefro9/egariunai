@@ -1,0 +1,61 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Newsletter list{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Newsletter list</h5>
+                </div>
+                <div class="card-body px-0">
+                    <table class="table table-middle table-material rt-md">
+                        <thead class="rt-table-hide">
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                <i class="material-icons">email</i> Email
+                            </th>
+                            <th>
+                                IP
+                            </th>
+                            <th>
+                                Created
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                             <tr>
+                                <td class="rt-header">
+                                    {{ item.id }}
+                                </td>
+                                <td>
+                                    <span class="text-info">{{ item.email }}</span>
+                                </td>
+                                <td>
+                                    {{ item.ipAddress }}
+                                </td>
+                                <td>
+                                    {{ item.created|date('Y-m-d H:i') }}
+                                </td>
+                                <td>
+                                    <a href="{{ path('newsletter-delete', {'id': item.id}) }}" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                             </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

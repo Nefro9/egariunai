@@ -44,6 +44,18 @@ class AdminMainMenu
             'route'      => 'dashboard'
         ]);
 
+        $menu->addChild('Other',[
+            'extras' => ['title' => true]
+        ]);
+
+        $menu->addChild('Newsletter', [
+            'route' => 'newsletter-list',
+            'extras' => [
+                'icon' => 'email',
+                'icon_type' => 'material',
+            ]
+        ]);
+
         return $menu;
     }
 }

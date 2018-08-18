@@ -1,404 +1,398 @@
 {% extends 'admin/base.html.twig' %}
 
 {% block body %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-lg-8">
-      <div class="card">
-        <div class="card-header">
-          <h5>Tables</h5>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Tables</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-secondary">
+                            Tables are essential for rendering data. Since we extend Bootstrap4, all bootstrap table styles and types work out of the box
+                        </p>
+                        <p class="text-secondary">
+                            Simplify Admin provides a lot of table utilites. Including utilities to make tables responsive
+                        </p>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <p class="text-secondary">
-            Tables are essential for rendering data. Since we extend Bootstrap4, all bootstrap table styles and types work out of the box
-          </p>
-          <p class="text-secondary">
-           Simplify Admin provides a lot of table utilites. Including utilities to make tables responsive
-          </p>
+        <h5 class="section-title">
+            Tables
+        </h5>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Basic Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-middle">
+                            <thead>
+                            <tr>
+                                <th>Project</th>
+                                <th>Lead</th>
+                                <th>Progress</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Alexa Space AI
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Peter Stacy
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Research and Dev
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Kenny Sewalk
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
 
+
+                                <td>
+                                    Quality Control
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Joseph Dory
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+
+                                <td>
+                                    Warp Drive
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Tiara Nemo
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+
+                                <td>
+                                    Science and Tech
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Gilana Kubert
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+
+                                <td>
+                                    Liberal Arts
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Teddy Jackson
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+
+                                <td>
+                                    Spece Creatures
+                                </td>
+                                <td>
+                                    <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
+                                    Leany Suzan
+                                </td>
+                                <td style="">
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <h5 class="section-title">
-    Tables
-  </h5>
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h5>Basic Table</h5>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Striped Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Manager</th>
+                                <th>Revenue</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Space Y Ltd
+                                </td>
+                                <td>
+                                    Kenny Sewalk
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Plum Inc
+                                </td>
+                                <td>
+                                    Peter Norman
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Graped Inc
+                                </td>
+                                <td>
+                                    Karen Brown
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Hover Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Manager</th>
+                                <th>Revenue</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Guava Inc
+                                </td>
+                                <td>
+                                    Kenny Brown
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tweeps Inc
+                                </td>
+                                <td>
+                                    Ginive Dufran
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    FacePalm LLC
+                                </td>
+                                <td>
+                                    Thomas Dreary
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Compact Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Manager</th>
+                                <th>Revenue</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Amazing Inc
+                                </td>
+                                <td>
+                                    Tanya Ohaia
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    FacePalm LLC
+                                </td>
+                                <td>
+                                    Diana Frisk
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tweeps Inc
+                                </td>
+                                <td>
+                                    Mandy Lemar
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    People Inc
+                                </td>
+                                <td>
+                                    Suzan Lemar
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tweeps Inc
+                                </td>
+                                <td>
+                                    Mandy Lemar
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Dark Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-dark">
+                            <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Manager</th>
+                                <th>Revenue</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Amazing Inc
+                                </td>
+                                <td>
+                                    Tanya Ohaia
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    FacePalm LLC
+                                </td>
+                                <td>
+                                    Diana Frisk
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Tweeps Inc
+                                </td>
+                                <td>
+                                    Mandy Lemar
+                                </td>
+                                <td>
+                                    $ 15,000
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="card-body">
-          <table class="table table-middle">
-            <thead>
-              <tr>
-
-
-                <th>Project</th>
-                <th>Lead</th>
-                <th>Progress</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-
-
-                <td>
-                  Alexa Space AI
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Peter Stacy
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-
-
-                <td>
-                  Research and Dev
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Kenny Sewalk
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-
-
-                <td>
-                  Quality Control
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Joseph Dory
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-
-
-                <td>
-                  Warp Drive
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Tiara Nemo
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 35%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-
-
-                <td>
-                  Science and Tech
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Gilana Kubert
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-
-
-                <td>
-                  Liberal Arts
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Teddy Jackson
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-
-
-                <td>
-                  Spece Creatures
-                </td>
-                <td>
-                  <img src="http://via.placeholder.com/256x256" alt="" class="img-thumb-sm mr-3">
-                  Leany Suzan
-                </td>
-                <td style="">
-                  <div class="progress progress-thin">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-lg-6">
-
-      <div class="card">
-        <div class="card-header">
-          <h5>Striped Table</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Manager</th>
-                <th>Revenue</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Space Y Ltd
-                </td>
-                <td>
-                  Kenny Sewalk
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Plum Inc
-                </td>
-                <td>
-                  Peter Norman
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Graped Inc
-                </td>
-                <td>
-                  Karen Brown
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-lg-6">
-      <div class="card">
-        <div class="card-header">
-          <h5>Hover Table</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Manager</th>
-                <th>Revenue</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Guava Inc
-                </td>
-                <td>
-                  Kenny Brown
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Tweeps Inc
-                </td>
-                <td>
-                  Ginive Dufran
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  FacePalm LLC
-                </td>
-                <td>
-                  Thomas Dreary
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-lg-6">
-      <div class="card">
-        <div class="card-header">
-          <h5>Compact Table</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Manager</th>
-                <th>Revenue</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Amazing Inc
-                </td>
-                <td>
-                  Tanya Ohaia
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  FacePalm LLC
-                </td>
-                <td>
-                  Diana Frisk
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Tweeps Inc
-                </td>
-                <td>
-                  Mandy Lemar
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  People Inc
-                </td>
-                <td>
-                  Suzan Lemar
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Tweeps Inc
-                </td>
-                <td>
-                  Mandy Lemar
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-12 col-lg-6">
-      <div class="card">
-        <div class="card-header">
-          <h5>Dark Table</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Manager</th>
-                <th>Revenue</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Amazing Inc
-                </td>
-                <td>
-                  Tanya Ohaia
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  FacePalm LLC
-                </td>
-                <td>
-                  Diana Frisk
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Tweeps Inc
-                </td>
-                <td>
-                  Mandy Lemar
-                </td>
-                <td>
-                  $ 15,000
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
     </div>
-  </div>
-
-</div>
 {% endblock %}

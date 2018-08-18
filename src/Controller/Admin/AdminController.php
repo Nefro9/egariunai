@@ -10,14 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdminController extends Controller
 {
-
     /**
      * @Route("/", name="dashboard")
      */
     public function dashboard()
     {
-
         return $this->render('admin/dashboard.html.twig');
     }
-
 }
