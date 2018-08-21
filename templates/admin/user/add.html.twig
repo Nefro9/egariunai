@@ -1,6 +1,6 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Newsletter list{% endblock %}
+{% block title %}User list{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-header">
-                    <h5>Newsletter list</h5>
+                    <h5>Users</h5>
                 </div>
                 <div class="card-body px-0">
                     <table class="table table-middle table-material rt-md">
@@ -39,14 +39,16 @@
                                 <td class="rt-header">
                                     {{ item.id }}
                                 </td>
-                                <td>
-                                    <span class="text-info">{{ item.email }}</span>
+
+                                 <td>
+                                     {{ item.username }}
+                                </td>
+                                 <td>
+                                 {{ item.email }}
                                 </td>
                                 <td>
-                                    {{ item.ipAddress }}
-                                </td>
-                                <td>
-                                    {{ item.created|date('Y-m-d H:i') }}
+                                    {{ item.role }}
+                                    {#{{ item.created|date('Y-m-d H:i') }}#}
                                 </td>
                                 <td>
                                     <a href="javascript:;" class="btn btn-danger btn-sm" data-href="{{ path('newsletter-delete', {'id': item.id}) }}" data-toggle="modal" data-target="#confirm-delete">Delete</a>
@@ -55,6 +57,19 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-4">
+            <div class="card actions">
+                <div class="card-header">
+                    <h5>Actions</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-success"><i class="material-icons">person_add</i> Add User</a>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('user-add') }}" class="btn btn-success"><i class="material-icons">person_add</i> Add User</a>
                 </div>
             </div>
 

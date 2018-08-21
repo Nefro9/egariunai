@@ -1,3 +1,11 @@
 table .btn-sm {
     padding: .1rem .8rem;
 }
+
+.card.actions .card-body {
+    border-top: 1px solid #eee;
+}
+
+.card.actions .card-header+.card-body {
+   padding-top: 1.3rem;
+}

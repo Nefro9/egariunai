@@ -33,7 +33,7 @@ class AdminMainMenu
         ]);
 
         $menu->addChild('Users', [
-            'route' => 'homepage',
+            'route' => 'user-list',
             'extras' => [
                 'icon' => 'folder_open',
                 'icon_type' => 'material',
@@ -41,7 +41,7 @@ class AdminMainMenu
         ]);
 
         $menu['Users']->addChild('List users', [
-            'route'      => 'dashboard'
+            'route'      => 'user-list'
         ]);
 
         $menu->addChild('Other',[

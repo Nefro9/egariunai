@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="ROLE_SUPER_ADMIN" resname="ROLE_SUPER_ADMIN">
+                <source>Super Admin</source>
+                <target>Super Admin1</target>
+            </trans-unit>
+            <trans-unit id="ROLE_ADMIN" resname="ROLE_ADMIN">
+                <source>Admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="ROLE_USER" resname="ROLE_USER">
+                <source>User</source>
+                <target>User</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

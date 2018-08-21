@@ -1,6 +1,6 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Newsletter list{% endblock %}
+{% block title %}User list{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-header">
-                    <h5>Newsletter list</h5>
+                    <h5>Users</h5>
                 </div>
                 <div class="card-body px-0">
                     <table class="table table-middle table-material rt-md">
@@ -20,13 +20,13 @@
                                 ID
                             </th>
                             <th>
+                                <i class="material-icons">person</i> Username
+                            </th>
+                            <th>
                                 <i class="material-icons">email</i> Email
                             </th>
                             <th>
-                               <i class="material-icons">near_me</i> IP
-                            </th>
-                            <th>
-                                <i class="material-icons">access_time</i> Created
+                                <i class="material-icons">group</i> Role
                             </th>
                             <th>
                                 Actions
@@ -35,26 +35,38 @@
                         </thead>
                         <tbody>
                         {% for item in items %}
-                             <tr>
+                            <tr>
                                 <td class="rt-header">
                                     {{ item.id }}
                                 </td>
+
                                 <td>
-                                    <span class="text-info">{{ item.email }}</span>
+                                    {{ item.username }}
                                 </td>
                                 <td>
-                                    {{ item.ipAddress }}
+                                    {{ item.email }}
                                 </td>
                                 <td>
-                                    {{ item.created|date('Y-m-d H:i') }}
+                                    {{ item.role|trans }}
                                 </td>
                                 <td>
-                                    <a href="javascript:;" class="btn btn-danger btn-sm" data-href="{{ path('newsletter-delete', {'id': item.id}) }}" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+                                    <a href="javascript:;" class="btn btn-danger btn-sm" data-href="{{ path('user-delete', {'id': item.id}) }}" data-toggle="modal" data-target="#confirm-delete">Delete</a>
                                 </td>
-                             </tr>
+                            </tr>
                         {% endfor %}
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-4">
+            <div class="card actions">
+                <div class="card-header">
+                    <h5>Actions</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('user-add') }}" class="btn btn-success"><i class="material-icons">person_add</i> Add User</a>
                 </div>
             </div>
 
