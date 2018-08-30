@@ -21,12 +21,14 @@ class UserSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            UserRegistrationEvent::AUTO_LOGGIN => 'autoLogginUser',
-            UserRegistrationEvent::ON_COMPLETE => 'onRegistrationComplete',
+            UserRegistrationEvent::REGISTRATION_SUCCESS => [
+                ['autoLogin', 0],
+                ['sendNotification', 10]
+            ]
         ];
     }
 
-    public function onRegistrationComplete(UserRegistrationEvent $event)
+    public function sendNotification(UserRegistrationEvent $event)
     {
         //TODO: send email
         $user = $event->getUser();
@@ -34,7 +36,7 @@ class UserSubscriber implements EventSubscriberInterface
         $this->session->getFlashBag()->add('success', 'Sveikiname ' . $user->getUsername() . ', jus sekmingai užsiregistravote');
     }
 
-    public function autoLogginUser(UserRegistrationEvent $event)
+    public function autoLogin(UserRegistrationEvent $event)
     {
         $user = $event->getUser();
 

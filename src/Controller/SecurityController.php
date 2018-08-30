@@ -68,9 +68,7 @@ class SecurityController extends Controller
             $em->flush();
 
             $userEvent = new UserRegistrationEvent($user);
-
-            $dispatcher->dispatch(UserRegistrationEvent::AUTO_LOGGIN, $userEvent);
-            $dispatcher->dispatch(UserRegistrationEvent::ON_COMPLETE, $userEvent);
+            $dispatcher->dispatch(UserRegistrationEvent::REGISTRATION_SUCCESS, $userEvent);
 
             return $this->redirectToRoute('register_form');
         }

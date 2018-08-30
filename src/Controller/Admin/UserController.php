@@ -66,6 +66,8 @@ class UserController extends Controller
      * @param Request $request
      *
      * @param User $user
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function userEdit(Request $request, User $user)
     {
