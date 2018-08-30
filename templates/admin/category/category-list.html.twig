@@ -1,0 +1,73 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Category list{% endblock %}
+
+{% block body %}
+
+    {{ include('admin/modals/confirm_delete.twig.html') }}
+
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Category list</h5>
+                </div>
+                <div class="card-body px-0">
+                    <table class="table table-middle table-material rt-md">
+                        <thead class="rt-table-hide">
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                               <i class="material-icons">extension</i> Products
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in items %}
+                             <tr>
+                                <td class="rt-header">
+                                    {{ item.id }}
+                                </td>
+                                <td>
+                                    <span class="text-info">{{ item.title }}</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning">{{ random(100) }} </span>
+                                <td>
+                                    <a href="{{ path('category-edit', {'category': item.id}) }}" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="javascript:;" class="btn btn-danger btn-sm" data-href="{{ path('category-delete', {'category': item.id}) }}" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+                                </td>
+                             </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-4">
+            <div class="card actions">
+                {{ form_start(form) }}
+                <div class="card-header">
+                    <h5>New category</h5>
+                </div>
+                <div class="card-body">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success" type="submit">Save</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

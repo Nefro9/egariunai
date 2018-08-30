@@ -40,8 +40,21 @@ class AdminMainMenu
             ]
         ]);
 
+
         $menu['Users']->addChild('List users', [
             'route'      => 'user-list'
+        ]);
+
+        $menu['Users']->addChild('Add user', [
+            'route'      => 'user-add'
+        ]);
+
+        $menu->addChild('Categories', [
+            'route' => 'category-list',
+            'extras' => [
+                'icon' => 'label',
+                'icon_type' => 'material',
+            ]
         ]);
 
         $menu->addChild('Other',[

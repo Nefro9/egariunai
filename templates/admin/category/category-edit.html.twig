@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Edit Category{% endblock title %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Edit Category</h5>
+                </div>
+                <div class="card-body">
+                    {{ form_row(form.title) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4">
+            <div class="card actions">
+                <div class="card-header">
+                    <h5>Actions</h5>
+                </div>
+
+                {% if item is defined %}
+                    <div class="m-portlet__body">
+                        <div class="row ">
+                            <div class="col-xl-12">
+                                {#test#}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="{{ path('category-list') }}" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
