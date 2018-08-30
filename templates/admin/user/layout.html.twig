@@ -1,0 +1,61 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Users{% endblock title %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{% block subtitle %}{% endblock subtitle %}</h5>
+                </div>
+                <div class="card-body">
+                    {% block form_fields %}{% endblock form_fields %}
+                </div>
+            </div>
+
+            {% if form.plainPassword is defined and form.plainPassword.rendered != true %}
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Reset Password</h5>
+                    </div>
+                    <div class="card-body">
+                        {{ form_row(form.plainPassword) }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-xl-4">
+            <div class="card actions">
+                <div class="card-header">
+                    <h5>Actions</h5>
+                </div>
+
+                {% block sidebar %}
+
+                    {% if item is defined %}
+                        <div class="m-portlet__body">
+                            <div class="row ">
+                                <div class="col-xl-12">
+                                    {#{% include 'Form/item-modified.html.twig' %}#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <a href="{{ path('user-list') }}" class="btn btn-secondary">Back</a>
+                    </div>
+                {% endblock sidebar %}
+            </div>
+
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

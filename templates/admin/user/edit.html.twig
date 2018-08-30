@@ -1,10 +1,10 @@
 {% extends 'admin/user/layout.html.twig' %}
 
-{% block subtitle %}Naujas vartotojas{% endblock subtitle %}
+{% block subtitle %}Edit User{% endblock subtitle %}
 
 {% block form_fields %}
     {{ form_row(form.username) }}
     {{ form_row(form.email) }}
     {{ form_row(form.roles) }}
-    {{ form_row(form.plainPassword) }}
+
 {% endblock %}

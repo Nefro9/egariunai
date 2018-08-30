@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="ROLE_SUPER_ADMIN" resname="ROLE_SUPER_ADMIN">
                 <source>Super Admin</source>
-                <target>Super Admin1</target>
+                <target>Super Admin</target>
             </trans-unit>
             <trans-unit id="ROLE_ADMIN" resname="ROLE_ADMIN">
                 <source>Admin</source>

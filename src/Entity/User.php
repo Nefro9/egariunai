@@ -30,12 +30,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=170, unique=true)
-     * @Assert\NotBlank()
      */
     private $username;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -106,6 +104,13 @@ class User implements UserInterface
     public function getSalt()
     {
         return NULL;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function getRoles()

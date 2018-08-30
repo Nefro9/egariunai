@@ -1,0 +1,20 @@
+{% extends 'admin/user/layout.html.twig' %}
+
+{% block title %}Profilis{% endblock title %}
+{% block subtitle %}{{ item.firstName ~' '~ item.lastName }}{% if app.user.apartment %} ({{ app.user.apartment.house }}){% endif %}{% endblock subtitle %}
+
+{% block form_fields %}
+    {{ form_row(form.username) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.email) }}
+{% endblock %}
+
+{% block sidebar %}
+    <div class="m-portlet__foot m-portlet__foot--fit">
+        <div class="m-form__actions">
+            <button type="submit" class="btn btn-success">Išsaugoti</button>
+            <a href="{{ path('dashboard') }}" class="btn btn-secondary">Grižti</a>
+        </div>
+    </div>
+{% endblock %}
