@@ -2,15 +2,18 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Category
 {
+    const pad = '—';
+
     /**
      * @var int
      *
@@ -50,6 +53,18 @@ class Category
     /**
      * @var int
      *
+     * @ORM\Column(name="level", type="integer", nullable=true)
+     */
+    private $level;
+
+    /**
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
+     */
+    protected $columnOrder;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="order_nr", type="integer", nullable=true)
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -61,6 +76,8 @@ class Category
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->level = 0;
+        $this->order = 0;
     }
 
     /**
@@ -80,6 +97,13 @@ class Category
     public function getChildren ()
     {
         return $this->children;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
     }
 
     /**
@@ -172,12 +196,64 @@ class Category
         return $this->order;
     }
 
+    public function addChild(Category $child): self
+    {
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(Category $child): self
+    {
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function getLevelPads(): ?string
+    {
+        return str_repeat('—', $this->level);
+    }
+
+    public function setLevel(?int $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
     /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
     public function onUpdate()
     {
-        //TODO: update slug
+        $slugify    = new Slugify();
+        $this->slug = $slugify->slugify($this->title);
+
+        $this->level = $this->getItemLevel($this);
+    }
+
+    private function getItemLevel(Category $category, $level = 0)
+    {
+        if($category->getParent()) {
+            $level = $this->getItemLevel($category->getParent(), ++$level);
+        }
+
+        return $level;
     }
 }

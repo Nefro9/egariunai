@@ -37,9 +37,7 @@ class CategoryController extends Controller
             return $this->redirectToRoute('category-list');
         }
 
-        //TODO: add coalesce order
-        // http://www.sqlfiddle.com/#!9/63640/1
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAllOrder();
 
         return $this->render('admin/category/category-list.html.twig', [
             'items' => $categories,

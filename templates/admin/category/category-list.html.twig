@@ -26,21 +26,28 @@
                                <i class="material-icons">extension</i> Products
                             </th>
                             <th>
+                                Order
+                            </th>
+                            <th>
                                 Actions
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for item in items %}
+                        {% for itemData in items %}
+                            {% set item = itemData.item %}
                              <tr>
                                 <td class="rt-header">
                                     {{ item.id }}
                                 </td>
                                 <td>
-                                    <span class="text-info">{{ item.title }}</span>
+                                    <span class="text-info">{{ item.levelPads }}{{ item.title }}</span>
                                 </td>
                                 <td>
                                     <span class="badge badge-warning">{{ random(100) }} </span>
+                                </td>
+                                <td>
+                                    {{ item.order }}
                                 <td>
                                     <a href="{{ path('category-edit', {'category': item.id}) }}" class="btn btn-success btn-sm">Edit</a>
                                     <a href="javascript:;" class="btn btn-danger btn-sm" data-href="{{ path('category-delete', {'category': item.id}) }}" data-toggle="modal" data-target="#confirm-delete">Delete</a>
@@ -61,6 +68,8 @@
                 </div>
                 <div class="card-body">
                     {{ form_row(form.title) }}
+                    {{ form_row(form.parent) }}
+                    {{ form_row(form.order) }}
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-success" type="submit">Save</button>
