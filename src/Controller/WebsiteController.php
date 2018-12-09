@@ -46,8 +46,9 @@ class WebsiteController extends AbstractController
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAllOrder();
 
         return $this->render('index.html.twig', [
-            'newsletter' => $form->createView(),
-            'categories' => $categories
+            'newsletter'      => $form->createView(),
+            'categories'      => $categories,
+            'currentCategory' => NULL
         ]);
     }
 
