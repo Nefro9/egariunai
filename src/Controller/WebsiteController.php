@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Newsletter;
 use App\Form\NewsletterForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +29,7 @@ class WebsiteController extends AbstractController
     public function index(Request $request, SessionInterface $session): Response
     {
         $newsletter = new Newsletter;
-        $form = $this->createForm(NewsletterForm::class, $newsletter);
+        $form       = $this->createForm(NewsletterForm::class, $newsletter);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -39,11 +40,52 @@ class WebsiteController extends AbstractController
             $em->persist($newsletter);
             $em->flush();
 
-            $session->set('newssletter', 'done');
+            $session->set('newsletter', 'done');
         }
 
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAllOrder();
+
         return $this->render('index.html.twig', [
-            'newsletter' => $form->createView()
+            'newsletter' => $form->createView(),
+            'categories' => $categories
+        ]);
+    }
+
+    /**
+     * @Route("/category/{category_slug}",  methods={"GET", "POST"}, name="category_list")
+     * @param Request $request
+     *
+     * @param SessionInterface $session
+     *
+     * @param Category $category_slug
+     *
+     * @return Response
+     */
+    public function category(Request $request, SessionInterface $session, $category_slug): Response
+    {
+        $currentCategory = $this->getDoctrine()->getRepository(Category::class)->findOneBy(['slug' => $category_slug]);
+
+        $newsletter = new Newsletter;
+        $form       = $this->createForm(NewsletterForm::class, $newsletter);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $newsletter->setIpAddress($request->getClientIp());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newsletter);
+            $em->flush();
+
+            $session->set('newsletter', 'done');
+        }
+
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAllOrder();
+
+        return $this->render('index.html.twig', [
+            'newsletter'      => $form->createView(),
+            'categories'      => $categories,
+            'currentCategory' => $currentCategory
         ]);
     }
 }

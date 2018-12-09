@@ -26,3 +26,14 @@
     height: 200px;
     position: relative;
 }
+
+/*** Categories ***/
+
+.card.categories a {
+    float: left;
+    width: 100%;
+    margin-bottom: 4px;
+}
+.card.categories a.active {
+    color: #fd8b57;
+}

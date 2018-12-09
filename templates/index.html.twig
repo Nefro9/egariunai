@@ -5,25 +5,16 @@
         <div class="container ">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="card">
+                    <div class="card categories">
                         <div class="card-header">
                             <h5>Kategorijos</h5>
                         </div>
                         <div class="card-body">
-                            <ul>
-                                <li>Only Utilites that we have chang</li>
-                                <li>Only Utilites that we have chang</li>
-                                <li>Only Utilites that we have chang</li>
-                                <li>Only Utilites that we have chang</li>
-                                <li>Only Utilites that we have chang</li>
-                                <li>Only Utilites that we have chang</li>
-                            </ul>
-                            <p>
-                                Only Utilites that we have changed or added new are shown here. But all Bootstrap4 utilities will work with Simplify
-                                Only Utilites that we have changed or added new are shown here. But all Bootstrap4 utilities will work with Simplify
-                                Only Utilites that we have changed or added new are shown here. But all Bootstrap4 utilities will work with Simplify
-                                Only Utilites that we have changed or added new are shown here. But all Bootstrap4 utilities will work with Simplify
-                            </p>
+                            {% for category in categories %}
+                                <a href="{{ path('category_list', {'category_slug': category.item.slug}) }}" class="{% if currentCategory and category.item.id == currentCategory.id %}active{% endif %}">
+                                    {{ category.item.levelPads }} {{ category.item.title }}
+                                </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
